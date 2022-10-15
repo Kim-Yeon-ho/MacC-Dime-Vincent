@@ -26,13 +26,15 @@ final class ArtItemCategotyModalViewController: BaseViewController {
         $0.font = .preferredFont(forTextStyle: .callout, weight: .bold)
     }
 
-    private let refreshButton = UIButton().then {
+    private let refreshConfiguration = UIImage.SymbolConfiguration(textStyle: .largeTitle)
+
+    private lazy var refreshButton = UIButton().then {
         $0.imageView?.contentMode = .scaleAspectFit
         $0.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         $0.backgroundColor = .red
         $0.tintColor = .mainBlack
         $0.addTarget(self, action: #selector(refreshbuttonAction(_:)), for: .touchUpInside)
-        $0.setImage(UIImage(systemName: "arrow.clockwise.circle.fill"), for: .normal)
+        $0.setImage(UIImage(systemName: "arrow.clockwise.circle.fill", withConfiguration: refreshConfiguration), for: .normal)
     }
 
     private let acceptCategoryButton = UIButton().then {
