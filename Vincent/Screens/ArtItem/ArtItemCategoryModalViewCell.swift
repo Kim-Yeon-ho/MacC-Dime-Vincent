@@ -11,23 +11,10 @@ import SnapKit
 import Then
 
 final class ArtItemCategoryModalViewCell: BaseCollectionViewCell {
-    
-    private enum Constants {
-        // MARK: contentView layout constants
-        static let contentViewCornerRadius: CGFloat = 4.0
-
-        // MARK: profileImageView layout constants
-        static let imageHeight: CGFloat = 180.0
-
-        // MARK: Generic layout constants
-        static let verticalSpacing: CGFloat = 8.0
-        static let horizontalPadding: CGFloat = 16.0
-        static let profileDescriptionVerticalPadding: CGFloat = 10.0
-    }
 
     let artCategoryModalLabel = UILabel().then {
+        $0.font = .preferredFont(forTextStyle: .headline, weight: .semibold)
         $0.textAlignment = .center
-        $0.layer.cornerRadius = 10
         $0.backgroundColor = .clear
         $0.textColor = .black
     }
@@ -43,10 +30,37 @@ final class ArtItemCategoryModalViewCell: BaseCollectionViewCell {
     }
 
     override func render() {
-        
+        contentView.clipsToBounds = true
+        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.borderWidth = 1
+        contentView.layer.cornerRadius = 10
+        contentView.backgroundColor = .clear
+        contentView.addSubview(artCategoryModalLabel)
     }
 
     override func configUI() {
+        artCategoryModalLabel.snp.makeConstraints {
+            $0.centerX.equalTo(contentView.snp.centerX)
+            $0.centerY.equalTo(contentView.snp.centerY)
+        }
+    }
 
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                contentView.backgroundColor = .mainBlack
+                self.artCategoryModalLabel.textColor = .white
+            } else {
+                contentView.backgroundColor = .clear
+                self.artCategoryModalLabel.textColor = .black
+            }
+        }
     }
 }
+
+extension ArtItemCategoryModalViewCell: ReusableView {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+

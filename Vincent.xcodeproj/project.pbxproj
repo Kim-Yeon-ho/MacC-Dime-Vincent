@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106D227328FA56FF009A28B8 /* ArtItemSearchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D227228FA56FF009A28B8 /* ArtItemSearchedViewController.swift */; };
 		10C6715328F8199E00100D63 /* ArtItemCategoryModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6715228F8199E00100D63 /* ArtItemCategoryModalViewController.swift */; };
 		10C6715528F81A6100100D63 /* ArtItemCategoryModalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6715428F81A6100100D63 /* ArtItemCategoryModalViewCell.swift */; };
 		10DAAE4D28F539B1000CB45C /* ArtItemCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAAE4C28F539B1000CB45C /* ArtItemCollectionView.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		106D227228FA56FF009A28B8 /* ArtItemSearchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtItemSearchedViewController.swift; sourceTree = "<group>"; };
 		10C6715228F8199E00100D63 /* ArtItemCategoryModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtItemCategoryModalViewController.swift; sourceTree = "<group>"; };
 		10C6715428F81A6100100D63 /* ArtItemCategoryModalViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtItemCategoryModalViewCell.swift; sourceTree = "<group>"; };
 		10DAAE4C28F539B1000CB45C /* ArtItemCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtItemCollectionView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				10DAAE5028F539CA000CB45C /* ArtItem.swift */,
 				10C6715228F8199E00100D63 /* ArtItemCategoryModalViewController.swift */,
 				10C6715428F81A6100100D63 /* ArtItemCategoryModalViewCell.swift */,
+				106D227228FA56FF009A28B8 /* ArtItemSearchedViewController.swift */,
 			);
 			path = ArtItem;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				10DAAE4D28F539B1000CB45C /* ArtItemCollectionView.swift in Sources */,
 				CBADEE5B28EEC1CA0010B5AA /* UIViewController+Extension.swift in Sources */,
 				A91C835728F4F3FA005DF70F /* ProfileTableViewCell.swift in Sources */,
+				106D227328FA56FF009A28B8 /* ArtItemSearchedViewController.swift in Sources */,
 				CBADEE3028EEBCE00010B5AA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
