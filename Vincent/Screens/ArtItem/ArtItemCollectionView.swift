@@ -25,8 +25,8 @@ class ArtItemCollectionView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
-        setupLayouts()
+        configUI()
+        render()
         populateProfiles()
         collectionView.reloadData()
     }
@@ -35,16 +35,17 @@ class ArtItemCollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupViews() {
-        self.addSubview(collectionView)
+    private func configUI() {
+        self.backgroundColor = .clear
+    }
 
+    private func render() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(ArtItemCell.self, forCellWithReuseIdentifier: ArtItemCell.identifier)
-        collectionView.backgroundColor = .blue
-    }
+        collectionView.backgroundColor = .clear
 
-    private func setupLayouts() {
+        self.addSubview(collectionView)
 
         collectionView.snp.makeConstraints {
             $0.leading.equalTo(self.snp.leading)
@@ -53,7 +54,6 @@ class ArtItemCollectionView: UIView {
             $0.bottom.equalTo(self.snp.bottom)
         }
 
-        self.backgroundColor = .red
     }
 
     private func populateProfiles() {
@@ -81,7 +81,7 @@ extension ArtItemCollectionView: UICollectionViewDataSource {
 
         let artItem = artItems[indexPath.row]
         cell.setup(with: artItem)
-        cell.contentView.backgroundColor = .red
+        cell.contentView.backgroundColor = .clear
 
         return cell
     }

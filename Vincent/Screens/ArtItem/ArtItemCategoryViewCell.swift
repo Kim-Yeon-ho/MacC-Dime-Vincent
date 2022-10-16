@@ -13,49 +13,49 @@ import Then
 final class ArtItemCategoryCell: UICollectionViewCell {
 
     let artItemCategoryLabel = UILabel().then {
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.mainBlack.cgColor
+        $0.layer.cornerRadius = 15
+        $0.font = .preferredFont(forTextStyle: .callout, weight: .semibold)
         $0.textColor = .black
         $0.backgroundColor = .clear
-        $0.layer.cornerRadius = 15
         $0.textAlignment = .center
-        $0.font = .systemFont(ofSize: 16, weight: .semibold)
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
-        setupLayouts()
+        configUI()
+        render()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupViews() {
+    private func configUI() {
         contentView.clipsToBounds = true
-        contentView.layer.borderWidth = 2
-        contentView.layer.cornerRadius = 20
-        contentView.backgroundColor = .clear
+//        contentView.backgroundColor = .clear
 
         contentView.addSubview(artItemCategoryLabel)
         
     }
 
-    private func setupLayouts() {
+    private func render() {
+        contentView.addSubview(artItemCategoryLabel)
 
         artItemCategoryLabel.snp.makeConstraints {
-            $0.centerX.equalTo(contentView.snp.centerX)
-            $0.centerY.equalTo(contentView.snp.centerY)
+            $0.edges.equalToSuperview()
         }
     }
 
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                contentView.backgroundColor = .black
+                self.artItemCategoryLabel.layer.backgroundColor = UIColor.mainBlack.cgColor
                 self.artItemCategoryLabel.textColor = .white
             } else {
-                contentView.backgroundColor = .clear
-                self.artItemCategoryLabel.textColor = .black
+                self.artItemCategoryLabel.layer.backgroundColor = UIColor.clear.cgColor
+                self.artItemCategoryLabel.textColor = .mainBlack
             }
         }
     }

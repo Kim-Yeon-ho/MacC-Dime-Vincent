@@ -14,21 +14,18 @@ class ArtItemCategoryView: UIView {
 
     private enum LayoutConstant {
         static let spacing: CGFloat = 10.0
-        static let cellWidth: CGFloat = 90
-        static let cellHeight: CGFloat = 40
+        static let cellWidth: CGFloat = 75
+        static let cellHeight: CGFloat = 36
     }
 
     private let categoryDetailData = ["마네킹", "염료", "천", "실바늘", "재봉틀", "미싱기"]
 
     private let categoryTitleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 24, weight: .heavy)
+        $0.font = .preferredFont(forTextStyle: .title1, weight: .heavy)
         $0.text = "섬유 패션"
     }
 
     private let collectionViewFlowLayout = UICollectionViewFlowLayout().then {
-        $0.minimumLineSpacing = 8
-        $0.itemSize = CGSize(width: LayoutConstant.cellWidth, height: LayoutConstant.cellHeight)
-        $0.sectionInset = UIEdgeInsets(top: LayoutConstant.spacing, left: LayoutConstant.spacing, bottom: LayoutConstant.spacing, right: LayoutConstant.spacing)
         $0.scrollDirection = .horizontal
     }
 
@@ -43,14 +40,14 @@ class ArtItemCategoryView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViewLayouts()
+        render()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupViewLayouts() {
+    private func render() {
         self.addSubviews(categoryTitleLabel, categoryListCollectionView)
 
         categoryTitleLabel.snp.makeConstraints {
@@ -63,7 +60,7 @@ class ArtItemCategoryView: UIView {
             $0.top.equalTo(categoryTitleLabel.snp.bottom).offset(20)
             $0.height.equalTo(40)
         }
-        self.backgroundColor = .red
+        self.backgroundColor = .clear
     }
 }
 
@@ -78,13 +75,13 @@ extension ArtItemCategoryView: UICollectionViewDataSource {
             assert(false, "Wrong cell")
         }
 
-//        if indexPath.item == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-//        }
+        if indexPath.item == 0 {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+        }
 
         cell.artItemCategoryLabel.text = categoryDetailData[indexPath.item]
-        cell.contentView.backgroundColor = .black
+        cell.contentView.backgroundColor = .clear
 
         return cell
         
@@ -93,7 +90,16 @@ extension ArtItemCategoryView: UICollectionViewDataSource {
 }
 
 extension ArtItemCategoryView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: LayoutConstant.cellWidth, height: LayoutConstant.cellHeight)
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: LayoutConstant.spacing, left: LayoutConstant.spacing, bottom: LayoutConstant.spacing, right: LayoutConstant.spacing)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return LayoutConstant.spacing
+    }
+
 }

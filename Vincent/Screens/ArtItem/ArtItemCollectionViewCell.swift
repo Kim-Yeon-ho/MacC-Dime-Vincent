@@ -36,41 +36,41 @@ final class ArtItemCell: UICollectionViewCell {
     }
 
     let artItemPrice = UILabel(frame: .zero).then {
-        $0.font = .systemFont(ofSize: 22, weight: .bold)
-        $0.backgroundColor = .blue
+        $0.font = .preferredFont(forTextStyle: .title2, weight: .bold)
+        $0.backgroundColor = .clear
         $0.numberOfLines = 0
         $0.textAlignment = .left
     }
 
     let artItemRegisterTime = UILabel(frame: .zero).then {
-        $0.font = .systemFont(ofSize: 10, weight: .semibold)
-        $0.backgroundColor = .mainYellow
+        $0.textColor = .systemGray
+        $0.font = .preferredFont(forTextStyle: .caption2, weight: .semibold)
+        $0.backgroundColor = .clear
         $0.numberOfLines = 0
         $0.textAlignment = .left
     }
 
     let artItemTitle = UILabel(frame: .zero).then {
         $0.numberOfLines = 0
-        $0.font = .systemFont(ofSize: 14, weight: .medium)
-        $0.backgroundColor = .white
+        $0.font = .preferredFont(forTextStyle: .subheadline, weight: .medium)
+        $0.backgroundColor = .clear
         $0.textAlignment = .left
     }
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setupViews()
-        setupLayouts()
+        configUI()
+        render()
     }
 
-    private func setupViews() {
+    private func configUI() {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = Constants.contentViewCornerRadius
-        contentView.backgroundColor = .white
-
-        contentView.addSubviews(artItemImageView, artItemPrice, artItemRegisterTime, artItemTitle)
+        contentView.backgroundColor = .clear
     }
 
-    private func setupLayouts() {
+    private func render() {
+        contentView.addSubviews(artItemImageView, artItemPrice, artItemRegisterTime, artItemTitle)
 
         artItemImageView.snp.makeConstraints {
             $0.leading.equalTo(contentView.snp.leading)
